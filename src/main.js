@@ -33,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const secretHeartBtn = document.getElementById('secret-heart-btn');
   const viewTogetherBtn = document.getElementById('view-together-portrait-btn');
 
+  // Pause audio when tab is hidden, resume when visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (bgMusic && !bgMusic.paused) {
+        bgMusic.pause();
+        bgMusic.dataset.wasPlaying = 'true';
+      }
+    } else {
+      if (bgMusic && bgMusic.dataset.wasPlaying === 'true') {
+        bgMusic.play().catch(err => console.warn(err));
+        delete bgMusic.dataset.wasPlaying;
+      }
+    }
+  });
+
   // Lock body scroll on initial gates screen
   if (royalGatesScreen) {
     document.body.classList.add('splash-active');
