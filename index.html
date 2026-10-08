@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsh ♥ Diksha | 24 November 2026</title>
+  <meta name="description" content="Together with their families, Harsh and Diksha invite you to their wedding celebration on 24 November 2026." />
+  <meta property="og:title" content="Harsh ♥ Diksha | 24 November 2026" />
+  <meta property="og:description" content="Together with their families, Harsh and Diksha invite you to their wedding celebration on 24 November 2026." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- GLOBAL: Particle Canvas (behind everything)    -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- GLOBAL: Music Toggle Button                    -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <button id="music-toggle" class="music-btn" aria-label="Toggle Music">
+    <i data-lucide="volume-2" class="music-icon music-on"></i>
+    <i data-lucide="volume-x" class="music-icon music-off"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- GLOBAL: Audio Element                          -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="/audio/wedding-music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 1: Grand Entrance / Splash Screen      -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section id="splash-screen" class="splash">
+    <div class="splash-mandala splash-mandala--bg"></div>
+    <div class="splash-ornament splash-ornament--top"></div>
+    <div class="splash-content">
+      <p class="splash-subtitle script-font">Together with their families</p>
+      <div class="splash-names">
+        <span class="splash-name" data-split>Harsh</span>
+        <span class="splash-ampersand script-font">&amp;</span>
+        <span class="splash-name" data-split>Diksha</span>
+      </div>
+      <p class="splash-tagline">request the honour of your presence</p>
+      <div class="splash-date-line">
+        <span class="splash-line"></span>
+        <span class="splash-date-text">24 · 11 · 2026</span>
+        <span class="splash-line"></span>
+      </div>
+      <button id="splash-enter-btn" class="splash-enter-btn">
+        <span>Enter the Celebration</span>
+        <i data-lucide="chevrons-down" class="btn-icon"></i>
+      </button>
+    </div>
+    <div class="splash-ornament splash-ornament--bottom"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT (hidden until splash dismissed)   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <main id="main-content" class="main-content" aria-hidden="true">
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 2: Hero                             -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="hero" class="section hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-mandala hero-mandala--left"></div>
+        <div class="hero-mandala hero-mandala--right"></div>
+        <p class="hero-pre-title script-font" data-animate="fade-up">~ We're Getting Married ~</p>
+        <h1 class="hero-names" data-animate="split-chars">
+          <span class="hero-name hero-name--groom">Harsh</span>
+          <span class="hero-heart">♥</span>
+          <span class="hero-name hero-name--bride">Diksha</span>
+        </h1>
+        <div class="hero-date" data-animate="fade-up">
+          <span class="hero-date-day">24</span>
+          <span class="hero-date-sep">·</span>
+          <span class="hero-date-month">November</span>
+          <span class="hero-date-sep">·</span>
+          <span class="hero-date-year">2026</span>
+        </div>
+        <div class="hero-scroll-indicator" data-animate="fade-up">
+          <span>Scroll to explore</span>
+          <i data-lucide="chevrons-down" class="scroll-arrow"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 3: Countdown Timer                  -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="countdown" class="section countdown">
+      <div class="section-inner">
+        <p class="section-pre-title script-font" data-animate="fade-up">Mark Your Calendar</p>
+        <h2 class="section-title" data-animate="fade-up">Save the Date</h2>
+        <div class="countdown-timer" data-animate="fade-up">
+          <div class="flip-card" id="countdown-days">
+            <div class="flip-card-inner">
+              <span class="flip-card-value">00</span>
+            </div>
+            <span class="flip-card-label">Days</span>
+          </div>
+          <div class="flip-card" id="countdown-hours">
+            <div class="flip-card-inner">
+              <span class="flip-card-value">00</span>
+            </div>
+            <span class="flip-card-label">Hours</span>
+          </div>
+          <div class="flip-card" id="countdown-minutes">
+            <div class="flip-card-inner">
+              <span class="flip-card-value">00</span>
+            </div>
+            <span class="flip-card-label">Minutes</span>
+          </div>
+          <div class="flip-card" id="countdown-seconds">
+            <div class="flip-card-inner">
+              <span class="flip-card-value">00</span>
+            </div>
+            <span class="flip-card-label">Seconds</span>
+          </div>
+        </div>
+        <p class="countdown-message" data-animate="fade-up">until we say "I do"</p>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 4: The Couple                       -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="couple" class="section couple">
+      <div class="couple-bg-mandala"></div>
+      <div class="section-inner">
+        <p class="section-pre-title script-font" data-animate="fade-up">The Happy Couple</p>
+        <h2 class="section-title" data-animate="fade-up">About Us</h2>
+        <div class="couple-cards">
+          <div class="couple-card couple-card--groom" data-animate="fade-right">
+            <div class="couple-card-frame">
+              <div class="couple-card-img" id="groom-img">
+                <img src="/images/groom-harsh.png" alt="Harsh - The Groom" class="couple-avatar" />
+              </div>
+              <div class="couple-card-frame-border"></div>
+            </div>
+            <h3 class="couple-card-name">Harsh</h3>
+            <p class="couple-card-role script-font">The Groom</p>
+            <p class="couple-card-bio">A dreamer with a heart of gold, ready to embark on life's most beautiful journey.</p>
+          </div>
+
+          <div class="couple-ampersand" data-animate="scale-in">
+            <span class="script-font">&amp;</span>
+          </div>
+
+          <div class="couple-card couple-card--bride" data-animate="fade-left">
+            <div class="couple-card-frame">
+              <div class="couple-card-img" id="bride-img">
+                <img src="/images/bride-diksha.png" alt="Diksha - The Bride" class="couple-avatar" />
+              </div>
+              <div class="couple-card-frame-border"></div>
+            </div>
+            <h3 class="couple-card-name">Diksha</h3>
+            <p class="couple-card-role script-font">The Bride</p>
+            <p class="couple-card-bio">A soul full of grace and warmth, whose smile lights up every room she enters.</p>
+          </div>
+        </div>
+
+        <div class="couple-together-showcase" data-animate="fade-up">
+          <button id="view-together-portrait-btn" class="together-pill-btn" aria-label="View Cartoon Wedding Portrait" data-full="/images/harsh-diksha.jpeg" data-caption="Harsh &amp; Diksha — Illustrated Wedding Portrait">
+            <i data-lucide="sparkles" class="btn-sparkle-icon"></i>
+            <span>View Our Illustrated Wedding Portrait Together</span>
+            <i data-lucide="eye" class="btn-icon"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 5: Wedding Events Timeline          -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="events" class="section events">
+      <div class="section-inner">
+        <p class="section-pre-title script-font" data-animate="fade-up">Wedding Week</p>
+        <h2 class="section-title" data-animate="fade-up">Celebration Events</h2>
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <!-- Event 1: Ring Ceremony & Sagai -->
+          <div class="timeline-item timeline-item--left" data-animate="timeline">
+            <div class="timeline-dot">
+              <i data-lucide="sparkles" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card-media" data-full="/images/gallery-6.png" data-caption="Ring Ceremony &amp; Sagai — Two Rings, Eternal Promises">
+                <img src="/images/gallery-6.png" alt="Ring Ceremony - Eternal Rings" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Ring Ceremony</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">💍</span>
+                  <h3 class="timeline-card-title">Ring Ceremony &amp; Sagai</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 21st November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> 6:00 PM onwards</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Crystal Ballroom</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Evening Elegance / Indo-Western</p>
+                </div>
+                <p class="timeline-card-desc">The sacred exchange of rings marking the eternal bond and auspicious beginning of our union.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 2: Haldi -->
+          <div class="timeline-item timeline-item--right" data-animate="timeline">
+            <div class="timeline-dot">
+              <i data-lucide="sun" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card-media" data-full="/images/haldi-ceremony.jpg" data-caption="Haldi Ceremony — A Morning of Turmeric, Blessings &amp; Joy">
+                <img src="/images/haldi-ceremony.jpg" alt="Haldi Ceremony" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Haldi Celebrations</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">🌼</span>
+                  <h3 class="timeline-card-title">Haldi Ceremony</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 22nd November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> 10:00 AM onwards</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Family Residence</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Yellow Attire</p>
+                </div>
+                <p class="timeline-card-desc">A vibrant morning celebration adorned with turmeric, blessings, and joy.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 3: Mehndi -->
+          <div class="timeline-item timeline-item--left" data-animate="timeline">
+            <div class="timeline-dot">
+              <i data-lucide="hand-metal" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card-media" data-full="/images/gallery-5.png" data-caption="Mehndi Ceremony — Intricate Henna Patterns &amp; Blessings">
+                <img src="/images/gallery-5.png" alt="Mehndi Ceremony" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Mehndi Art</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">✋</span>
+                  <h3 class="timeline-card-title">Mehndi</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 22nd November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> 4:00 PM onwards</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Family Residence</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Green / Floral</p>
+                </div>
+                <p class="timeline-card-desc">Beautiful henna patterns and an evening of laughter with the ladies.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 4: Sangeet -->
+          <div class="timeline-item timeline-item--right" data-animate="timeline">
+            <div class="timeline-dot">
+              <i data-lucide="music" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card-media" data-full="/images/gallery-4.png" data-caption="Sangeet Night — An Electrifying Celebration of Dance &amp; Music">
+                <img src="/images/gallery-4.png" alt="Sangeet Night" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Sangeet Night</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">🎶</span>
+                  <h3 class="timeline-card-title">Sangeet Night</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 23rd November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> 7:00 PM onwards</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Grand Ballroom</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Glamorous / Party Wear</p>
+                </div>
+                <p class="timeline-card-desc">An electrifying night of dance, music, and unforgettable performances.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 5: Wedding Ceremony -->
+          <div class="timeline-item timeline-item--left" data-animate="timeline">
+            <div class="timeline-dot timeline-dot--highlight">
+              <i data-lucide="heart" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card timeline-card--highlight">
+              <div class="timeline-card-media" data-full="/images/gallery-3.png" data-caption="Wedding Ceremony — The Sacred Pheras around the Holy Agni">
+                <img src="/images/gallery-3.png" alt="Wedding Ceremony - Pheras" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Sacred Pheras</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">💍</span>
+                  <h3 class="timeline-card-title">Wedding Ceremony</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 24th November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> Muhurat — Auspicious Hour</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Wedding Mandap</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Traditional / Ethnic</p>
+                </div>
+                <p class="timeline-card-desc">The sacred pheras — where two souls unite in a bond of eternal love.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event 6: Grand Reception -->
+          <div class="timeline-item timeline-item--right" data-animate="timeline">
+            <div class="timeline-dot">
+              <i data-lucide="party-popper" class="timeline-dot-icon"></i>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-card-media" data-full="/images/gallery-1.png" data-caption="Grand Reception — A Walk in Love &amp; Togetherness">
+                <img src="/images/gallery-1.png" alt="Grand Reception - Together in Love" class="timeline-card-img" />
+                <div class="timeline-card-media-overlay">
+                  <span class="timeline-media-tag script-font">Grand Reception</span>
+                  <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+                </div>
+              </div>
+              <div class="timeline-card-content">
+                <div class="timeline-card-header">
+                  <span class="timeline-card-icon">🥂</span>
+                  <h3 class="timeline-card-title">Grand Reception</h3>
+                </div>
+                <div class="timeline-card-details">
+                  <p class="timeline-card-date"><i data-lucide="calendar" class="detail-icon"></i> 25th November, 2026</p>
+                  <p class="timeline-card-time"><i data-lucide="clock" class="detail-icon"></i> 7:00 PM onwards</p>
+                  <p class="timeline-card-venue"><i data-lucide="map-pin" class="detail-icon"></i> Grand Banquet Hall</p>
+                  <p class="timeline-card-dress"><i data-lucide="palette" class="detail-icon"></i> Formal / Indo-Western</p>
+                </div>
+                <p class="timeline-card-desc">A grand evening of celebration, feast, and cherished togetherness.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 6: Family                           -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="family" class="section family">
+      <div class="section-inner">
+        <p class="section-pre-title script-font" data-animate="fade-up">With the Blessings of</p>
+        <h2 class="section-title" data-animate="fade-up">Our Beloved Families</h2>
+        <div class="family-grid">
+          <div class="family-side family-side--groom" data-animate="fade-right">
+            <div class="family-ornament">✦</div>
+            <h3 class="family-side-title">Groom's Family</h3>
+            <div class="family-members">
+              <div class="family-member">
+                <p class="family-member-name">Mr. & Mrs. Sharma</p>
+                <p class="family-member-relation script-font">Parents of the Groom</p>
+              </div>
+            </div>
+            <p class="family-quote script-font">"Our blessings and love go with you always."</p>
+          </div>
+
+          <div class="family-divider" data-animate="scale-in">
+            <div class="family-divider-line"></div>
+            <span class="family-divider-icon">♥</span>
+            <div class="family-divider-line"></div>
+          </div>
+
+          <div class="family-side family-side--bride" data-animate="fade-left">
+            <div class="family-ornament">✦</div>
+            <h3 class="family-side-title">Bride's Family</h3>
+            <div class="family-members">
+              <div class="family-member">
+                <p class="family-member-name">Mr. & Mrs. Gupta</p>
+                <p class="family-member-relation script-font">Parents of the Bride</p>
+              </div>
+            </div>
+            <p class="family-quote script-font">"May your journey together be filled with joy."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 7: Venue                            -->
+    <!-- ─────────────────────────────────────────── -->
+    <section id="venue" class="section venue">
+      <div class="venue-bg-parallax"></div>
+      <div class="venue-overlay"></div>
+      <div class="section-inner venue-inner">
+        <p class="section-pre-title script-font" data-animate="fade-up">Where It All Happens</p>
+        <h2 class="section-title" data-animate="fade-up">The Venue</h2>
+        <div class="venue-card" data-animate="fade-up">
+          <div class="venue-card-media" data-full="/images/gallery-2.png" data-caption="The Grand Palace — The Royal Wedding Mandap">
+            <img src="/images/gallery-2.png" alt="The Grand Palace - Royal Mandap" class="venue-card-img" />
+            <div class="venue-card-media-overlay">
+              <span class="venue-media-tag script-font">The Royal Mandap</span>
+              <i data-lucide="zoom-in" class="timeline-zoom-icon"></i>
+            </div>
+          </div>
+          <div class="venue-card-body">
+            <h3 class="venue-card-name">The Grand Palace</h3>
+            <p class="venue-card-address">123 Royal Avenue, New Delhi, India</p>
+            <div class="venue-card-divider"></div>
+            <div class="venue-card-details">
+              <div class="venue-detail">
+                <i data-lucide="calendar" class="detail-icon"></i>
+                <span>24th November, 2026</span>
+              </div>
+              <div class="venue-detail">
+                <i data-lucide="clock" class="detail-icon"></i>
+                <span>Auspicious Muhurat Time</span>
+              </div>
+            </div>
+            <a href="https://maps.google.com" target="_blank" rel="noopener" class="venue-directions-btn">
+              <i data-lucide="navigation" class="btn-icon"></i>
+              <span>Get Directions</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Lightbox -->
+    <div id="gallery-lightbox" class="lightbox" aria-hidden="true">
+      <button class="lightbox-close" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+      <button class="lightbox-prev" aria-label="Previous">
+        <i data-lucide="chevron-left"></i>
+      </button>
+      <button class="lightbox-next" aria-label="Next">
+        <i data-lucide="chevron-right"></i>
+      </button>
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="Gallery Image" />
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+      <div class="lightbox-counter">
+        <span id="lightbox-current">1</span> / <span id="lightbox-total">7</span>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- SECTION 9: Footer / Closing                 -->
+    <!-- ─────────────────────────────────────────── -->
+    <footer id="footer" class="section footer">
+      <div class="section-inner footer-inner">
+        <div class="footer-ornament">❧</div>
+        <p class="footer-message script-font" data-animate="fade-up">
+          "Two souls, one heart — forever intertwined."
+        </p>
+        <h2 class="footer-names" data-animate="fade-up">Harsh <span class="footer-heart">♥</span> Diksha</h2>
+        <p class="footer-date" data-animate="fade-up">24 · 11 · 2026</p>
+        <div class="footer-hashtag" data-animate="fade-up">
+          <span>#HarshWedsDiksha</span>
+        </div>
+        <div class="footer-divider"></div>
+        <p class="footer-credit" data-animate="fade-up">Made with ♥ for a beautiful beginning</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Entry Point JS -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
