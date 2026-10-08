@@ -62,300 +62,226 @@
 .diya--4 { animation-delay: 0.8s; }
 .diya--5 { animation-delay: 0.4s; }
 
-/* 3D Royal Gates Frame */
-.royal-gates-portal {
+/* ── 3D Antique Royal Palace Gates (Splits Down Center) ── */
+.lovable-gates-stage {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(92vw, 540px);
-  height: min(78vh, 640px);
-  z-index: 3;
-  perspective: 1200px;
-}
-
-.palace-arch-toran {
-  position: absolute;
-  top: -24px;
-  left: 0;
-  right: 0;
-  height: 50px;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.toran-marigolds {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  right: 10px;
-  height: 14px;
-  background: repeating-radial-gradient(circle at 10px 7px, #FF9933 0, #FF9933 8px, #FFD700 8px, #FFD700 16px);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-}
-
-.toran-bells {
-  position: absolute;
-  top: 14px;
-  width: 70%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.toran-bell {
-  color: #F4DF9F;
-  width: 20px;
-  height: 20px;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
-  transform-origin: top center;
-}
-
-.bell-sway-1 { animation: swing-bell 3.2s infinite ease-in-out; }
-.bell-sway-2 { animation: swing-bell 2.8s infinite ease-in-out 0.4s; }
-.bell-sway-3 { animation: swing-bell 3.5s infinite ease-in-out 0.8s; }
-
-/* 3D Dual-Door Mechanism */
-.palace-doors-stage {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  perspective: 1600px;
   transform-style: preserve-3d;
-  border-radius: 260px 260px 12px 12px;
   overflow: hidden;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 168, 83, 0.25);
-  border: 4px solid #8C6420;
+  z-index: 5;
 }
 
-.palace-door {
+.lovable-gate-leaf {
   position: absolute;
   top: 0;
-  width: 50%;
-  height: 100%;
+  bottom: 0;
+  width: 50vw;
+  height: 100vh;
+  overflow: hidden;
   transform-style: preserve-3d;
-  background: #1B1109;
-  z-index: 3;
+  will-change: transform;
+  z-index: 6;
+  background: #090503;
 }
 
-.palace-door--left {
+.gate-leaf--left {
   left: 0;
   transform-origin: left center;
-  border-right: 2px solid #5A3F14;
+  border-right: none;
+  box-shadow: 15px 0 35px rgba(0, 0, 0, 0.8);
 }
 
-.palace-door--right {
+.gate-leaf--right {
   right: 0;
   transform-origin: right center;
-  border-left: 2px solid #5A3F14;
+  border-left: none;
+  box-shadow: -15px 0 35px rgba(0, 0, 0, 0.8);
 }
 
-.door-panel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #24160C 0%, #150D07 50%, #2A1A0E 100%);
-  background-image: repeating-linear-gradient(90deg, rgba(212, 168, 83, 0.04) 0px, rgba(212, 168, 83, 0.04) 2px, transparent 2px, transparent 18px);
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.door-brass-border {
+.gate-leaf-texture {
   position: absolute;
-  inset: 12px;
-  border: 2px solid #B8860B;
-  border-radius: inherit;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 10px rgba(212, 168, 83, 0.3);
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./images/lovable-royal-gate.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: brightness(0.96) contrast(1.05);
 }
 
-.door-sunburst-medallion {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #F4DF9F 0%, #A67C24 60%, #4D330A 100%);
-  border: 2px solid #FFD700;
-  box-shadow: 0 0 20px rgba(212, 168, 83, 0.5);
-  margin-bottom: 24px;
+.leaf-texture--left {
+  left: 0;
 }
 
-.door-carved-panels {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 85%;
+.leaf-texture--right {
+  right: 0;
 }
 
-.door-panel-cell {
-  height: 48px;
-  border: 1px solid rgba(212, 168, 83, 0.3);
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.7);
-}
-
-.door-brass-handle {
+.gate-leaf-shadow {
   position: absolute;
-  top: 55%;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #F4DF9F, #996515);
-  border: 2px solid #FFE49E;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
 }
 
-.door-handle--left { right: 16px; }
-.door-handle--right { left: 16px; }
-
-.brass-ring {
-  width: 28px;
-  height: 38px;
-  border: 4px solid #F4DF9F;
-  border-radius: 50%;
-  transform: translateY(12px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-}
-
-/* Inner Palace Radiance */
+/* Inner Palace Radiance (Bursts when gates open) */
 .palace-inner-radiance {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, #FFF5D0 0%, #FFD700 35%, #D4A853 65%, #6B4E12 100%);
+  background: radial-gradient(circle at 50% 50%, #fff7dc 0%, #ffd700 35%, #d4a853 65%, #6b4e12 100%);
   opacity: 0;
-  z-index: 1;
+  z-index: 3;
   transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
-/* Overlay Proclamation Content */
-.royal-gates-overlay-content {
+/* ── Typography & CTA Overlay (Directly on the Gates, Matching Lovable Design) ── */
+.lovable-gates-overlay-content {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   text-align: center;
-  max-width: 680px;
+  max-width: min(92vw, 760px);
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
 }
 
-.shloka-badge {
-  display: inline-block;
-  font-size: 1.8rem;
-  color: var(--gold-light);
-  margin-bottom: 12px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+.lovable-shloka {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  color: #d4af37;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  font-weight: 500;
 }
 
-.royal-welcome-pretitle {
-  font-family: 'Great Vibes', cursive;
-  font-size: 1.9rem;
-  color: var(--gold-light);
-  letter-spacing: 1px;
+.lovable-enter-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.78rem, 1.2vw, 0.95rem);
+  letter-spacing: clamp(4px, 0.6vw, 7px);
+  color: #dfba6f;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+  font-weight: 500;
 }
 
-.royal-couple-headline {
+.lovable-couple-headline {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  margin: 10px 0;
+  gap: 14px;
+  margin: 6px 0 10px;
 }
 
-.headline-name {
+.lovable-name {
   font-family: 'Playfair Display', 'Cinzel', serif;
-  font-size: 4.8rem;
-  font-weight: 800;
-  color: var(--cream);
-  letter-spacing: 2px;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 168, 83, 0.4);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 700;
+  color: #f7ebdb;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 22px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 168, 83, 0.35);
 }
 
-.headline-heart {
-  color: var(--gold);
-  font-size: 3rem;
+.lovable-heart {
+  color: #d4af37;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   animation: heartbeat 2s infinite ease-in-out;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
 }
 
-.royal-wedding-date-tag {
+.lovable-date-tag {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  letter-spacing: clamp(4px, 0.6vw, 6px);
+  color: #dfba6f;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+  font-weight: 600;
+}
+
+.lovable-venue-sub {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
-  letter-spacing: 4px;
-  color: var(--cream-muted);
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  letter-spacing: 3px;
+  color: #f0e6d2;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  opacity: 0.9;
 }
 
-/* The Open Royal Gates Action Button */
-.gates-action-container {
+/* Lovable's Signature Crimson & Gold Button */
+.lovable-action-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.open-royal-gates-btn {
-  border: 2px solid var(--gold);
-  background: linear-gradient(135deg, rgba(35, 22, 12, 0.92) 0%, rgba(18, 11, 6, 0.95) 100%);
-  color: var(--cream);
-  padding: 16px 42px;
-  border-radius: 50px;
+.lovable-open-gates-btn {
+  background: linear-gradient(135deg, #741824 0%, #4a0f17 100%);
+  border: 1px solid rgba(229, 201, 141, 0.85);
+  color: #ffffff;
+  padding: 13px 36px;
+  border-radius: 4px;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 168, 83, 0.35);
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.open-royal-gates-btn:hover {
-  transform: translateY(-4px) scale(1.03);
-  border-color: var(--gold-light);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 168, 83, 0.7);
-  background: linear-gradient(135deg, rgba(60, 38, 20, 0.95) 0%, rgba(28, 17, 9, 0.98) 100%);
-}
-
-.btn-label-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.btn-title-text {
-  font-family: 'Cinzel', 'Playfair Display', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(116, 24, 36, 0.5);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   letter-spacing: 3px;
-  color: var(--gold-light);
 }
 
-.btn-desc-text {
+.lovable-open-gates-btn .btn-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 3.2px;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-block;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.lovable-open-gates-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: #ffd700;
+  background: linear-gradient(135deg, #8c1e2d 0%, #5c141d 100%);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 168, 83, 0.6);
+}
+
+.lovable-open-gates-btn .btn-hover-shimmer {
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: rotate(25deg);
+  transition: left 0.75s ease;
+  pointer-events: none;
+}
+
+.lovable-open-gates-btn:hover .btn-hover-shimmer {
+  left: 130%;
+}
+
+.lovable-audio-hint {
   font-family: 'Cormorant Garamond', serif;
   font-size: 0.95rem;
-  color: var(--cream-muted);
+  font-style: italic;
+  color: #dfba6f;
   letter-spacing: 1.5px;
-}
-
-.btn-sparkle, .btn-arrow-icon {
-  width: 22px;
-  height: 22px;
-  color: var(--gold);
-}
-
-.btn-arrow-icon {
-  animation: bounce-down 1.6s infinite ease-in-out;
-}
-
-.gates-audio-hint {
-  font-size: 0.92rem;
-  color: var(--gold-light);
-  letter-spacing: 1px;
-  opacity: 0.85;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+  margin-top: 4px;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -1224,11 +1150,19 @@
 }
 
 .final-quote {
-  font-size: 2.2rem;
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: clamp(3px, 0.45vw, 6px);
+  text-transform: uppercase;
   color: var(--gold-light);
-  max-width: 650px;
-  margin: 0 auto 20px;
-  line-height: 1.5;
+  max-width: 820px;
+  margin: 0 auto 24px;
+  line-height: 1.85;
+  text-shadow: 0 2px 14px rgba(212, 175, 55, 0.45), 0 0 35px rgba(212, 175, 55, 0.2);
+  font-style: normal;
+  position: relative;
+  padding: 0 16px;
 }
 
 .final-invitation-message {
@@ -1372,6 +1306,6 @@
   .event-card-media { width: 100%; min-height: 220px; }
   .event-card-body { width: 100%; padding: 24px 20px; }
   .final-names { font-size: 2.4rem; }
-  .final-quote { font-size: 1.7rem; }
+  .final-quote { font-size: 1.15rem; letter-spacing: 2.5px; line-height: 1.75; }
   .final-sacred-shlokas { font-size: 1.2rem; flex-direction: column; gap: 8px; }
 }

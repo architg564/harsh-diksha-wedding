@@ -102,7 +102,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      // Part the gates majestically
+      // Fade out overlay proclamation card immediately so doors parting is unobstructed
+      const overlayContent = royalGatesScreen.querySelector('.lovable-gates-overlay-content, .royal-gates-overlay-content');
+      if (overlayContent) {
+        tl.to(overlayContent, {
+          opacity: 0,
+          scale: 0.95,
+          duration: 0.6,
+          ease: 'power2.in'
+        }, 0);
+      }
+
+      // Part the full-screen gates majestically
       if (gateLeft) {
         tl.to(gateLeft, {
           rotateY: -115,
