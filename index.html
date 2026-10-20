@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Harsh ♥ Diksha | Royal Wedding Invitation | 24 November 2026</title>
-  <meta name="description" content="Royal Wedding Invitation of Er. Harsh and Er. Diksha on Tuesday, 24 November 2026 at Siddhesh Resort." />
+  <meta name="description"
+    content="Royal Wedding Invitation of Er. Harsh and Er. Diksha on Tuesday, 24 November 2026 at Siddhesh Resort." />
   <meta property="og:title" content="Harsh ♥ Diksha | Royal Wedding Invitation" />
-  <meta property="og:description" content="With the blessings of Lord Ganesha, cordially inviting you to the wedding of Er. Harsh &amp; Er. Diksha." />
+  <meta property="og:description"
+    content="With the blessings of Lord Ganesha, cordially inviting you to the wedding of Er. Harsh &amp; Er. Diksha." />
   <meta property="og:type" content="website" />
 
   <!-- Google Fonts: Royal Rajasthani & Luxury Invitation Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Rozha+One&family=Yatra+One&display=swap"
+    rel="stylesheet" />
+
+  <!-- Prevent Flash of Unstyled Content (FOUC) — hide body until Vite CSS loads -->
+  <style>
+    body { opacity: 0; }
+    body.styles-loaded { opacity: 1; transition: opacity 0.15s ease-in; }
+  </style>
+  <noscript><style>body { opacity: 1 !important; }</style></noscript>
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
+
 <body>
 
   <!-- ═══════════════════════════════════════════════ -->
@@ -34,6 +47,15 @@
   </button>
 
   <!-- ═══════════════════════════════════════════════ -->
+  <!-- GLOBAL: Floating Directions Button (Anytime)   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <a id="directions-toggle" href="https://maps.google.com/?q=Siddhesh+Resort" target="_blank" rel="noopener"
+    class="directions-btn" aria-label="Directions to Siddhesh Resort" title="Directions to Siddhesh Resort">
+    <i data-lucide="navigation" class="directions-icon"></i>
+    <span class="directions-btn-tooltip">Venue Directions</span>
+  </a>
+
+  <!-- ═══════════════════════════════════════════════ -->
   <!-- GLOBAL: Interactive Hanging Temple Bell        -->
   <!-- ═══════════════════════════════════════════════ -->
   <div id="hanging-temple-bell" class="hanging-bell-wrapper" title="Tap to Ring the Sacred Temple Bell">
@@ -48,7 +70,8 @@
   <!-- ═══════════════════════════════════════════════ -->
   <!-- GLOBAL: Interactive Flower Petals Shower Button -->
   <!-- ═══════════════════════════════════════════════ -->
-  <button id="shower-petals-btn" class="shower-petals-btn" aria-label="Shower Flower Petals" title="Shower Rose &amp; Marigold Petals">
+  <button id="shower-petals-btn" class="shower-petals-btn" aria-label="Shower Flower Petals"
+    title="Shower Rose &amp; Marigold Petals">
     <i data-lucide="flower-2" class="petal-btn-icon"></i>
     <span class="petal-btn-label">Shower Petals</span>
   </button>
@@ -64,8 +87,8 @@
   <!-- 1. OPENING — GRAND ROYAL PALACE & GATES       -->
   <!-- ═══════════════════════════════════════════════ -->
   <section id="royal-gates-screen" class="royal-gates-screen">
-    <!-- Palace Backdrop Layer -->
-    <div class="palace-bg-layer" style="background-image: url('./images/royal-palace-gate.jpg');"></div>
+    <!-- Palace Backdrop Layer (Revealed when gates open) -->
+    <div class="palace-bg-layer" style="background-image: url('./images/royal-courtyard-bg.jpg');"></div>
     <div class="palace-night-vignette"></div>
     <div class="palace-mist"></div>
 
@@ -82,13 +105,15 @@
     <div class="lovable-gates-stage">
       <!-- Left Gate Leaf (0 to 50vw) -->
       <div id="gate-door-left" class="lovable-gate-leaf gate-leaf--left">
-        <div class="gate-leaf-texture leaf-texture--left" style="background-image: url('./images/lovable-royal-gate.jpg');"></div>
+        <div class="gate-leaf-texture leaf-texture--left"
+          style="background-image: url('./images/lovable-royal-gate.jpg');"></div>
         <div class="gate-leaf-shadow"></div>
       </div>
 
       <!-- Right Gate Leaf (50vw to 100vw) -->
       <div id="gate-door-right" class="lovable-gate-leaf gate-leaf--right">
-        <div class="gate-leaf-texture leaf-texture--right" style="background-image: url('./images/lovable-royal-gate.jpg');"></div>
+        <div class="gate-leaf-texture leaf-texture--right"
+          style="background-image: url('./images/lovable-royal-gate.jpg');"></div>
         <div class="gate-leaf-shadow"></div>
       </div>
 
@@ -127,7 +152,7 @@
     <!-- 2. PALACE COURTYARD → WEDDING INVITATION    -->
     <!-- ─────────────────────────────────────────── -->
     <section id="hero" class="section hero-card-section">
-      <div class="hero-bg-palace" style="background-image: url('./images/royal-palace-gate.jpg');"></div>
+      <div class="hero-bg-palace" style="background-image: url('./images/royal-courtyard-bg.jpg');"></div>
       <div class="hero-paper-texture"></div>
 
       <div class="section-inner hero-inner">
@@ -147,7 +172,7 @@
           <div class="card-corner-ornament corner--br"></div>
 
           <p class="card-pretitle script-font" data-animate="fade-up">Royal Wedding Invitation</p>
-          
+
           <div class="card-names-showcase">
             <h1 class="card-name groom-name" data-animate="fade-right">
               <span class="prefix">Er.</span> Harsh
@@ -214,21 +239,23 @@
         <p class="section-pre-title script-font" data-animate="fade-up">Interactive Wedding Experience</p>
         <h2 class="section-title" data-animate="fade-up">Unveil the Date</h2>
 
-        <div class="scratch-card-wrapper" id="scratch-card-wrapper" data-animate="scale-in">
-          <!-- Beneath Card Layer (Revealed when scratched) -->
-          <div class="scratch-revealed-content">
-            <div class="revealed-badge" id="revealed-badge">
-              <div class="revealed-icon">✦ 🪔 ✦</div>
-              <p class="revealed-sub script-font">Mark Your Calendar</p>
-              <h3 class="revealed-date">TUESDAY, 24 NOVEMBER 2026</h3>
-              <p class="revealed-couple">Er. Harsh ♥ Er. Diksha</p>
-              <p class="revealed-resort"><i data-lucide="map-pin" class="mini-icon"></i> Siddhesh Resort</p>
-              <div class="revealed-gold-stamp">Auspicious Muhurat</div>
+        <div class="scratch-card-outer" data-animate="fade-up">
+          <div class="scratch-card-wrapper" id="scratch-card-wrapper">
+            <!-- Beneath Card Layer (Revealed when scratched) -->
+            <div class="scratch-revealed-content">
+              <div class="revealed-badge" id="revealed-badge">
+                <div class="revealed-icon">✦ 🪔 ✦</div>
+                <p class="revealed-sub script-font">Mark Your Calendar</p>
+                <h3 class="revealed-date">TUESDAY, 24 NOVEMBER 2026</h3>
+                <p class="revealed-couple">Er. Harsh ♥ Er. Diksha</p>
+                <p class="revealed-resort"><i data-lucide="map-pin" class="mini-icon"></i> Siddhesh Resort</p>
+                <div class="revealed-gold-stamp">Auspicious Muhurat</div>
+              </div>
             </div>
-          </div>
 
-          <!-- Top Scratch Canvas (Metallic Gold Foil) -->
-          <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
+            <!-- Top Scratch Canvas (Metallic Gold Foil) -->
+            <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
+          </div>
         </div>
       </div>
     </section>
@@ -246,13 +273,14 @@
           </h2>
           <div class="proclamation-divider"></div>
           <p class="grandparents-proclamation script-font">
-            "Request the sweet fragrance of your loving presence to shower your blessings on the auspicious occasion of the marriage of their beloved grandson."
+            "Request the sweet fragrance of your loving presence to shower your blessings on the auspicious occasion of
+            the marriage of their beloved grandson."
           </p>
         </div>
 
         <!-- Couple Cards with Exact Lineage -->
         <div class="family-couple-grid">
-          
+
           <!-- Groom's Card -->
           <div class="royal-bio-card groom-card" data-animate="fade-right">
             <div class="bio-card-frame">
@@ -265,7 +293,7 @@
             <p class="bio-role script-font">The Groom</p>
             <div class="bio-lineage">
               <p class="lineage-parents">S/o Mrs. Archana &amp; Mr. Narendra Agrawal</p>
-              <p class="lineage-city"><i data-lucide="map-pin" class="mini-icon"></i> Kunher, Deeg</p>
+              <p class="lineage-city"><i data-lucide="map-pin" class="mini-icon"></i> Kumher, Deeg</p>
             </div>
           </div>
 
@@ -286,9 +314,9 @@
             <h3 class="bio-name">Er. Diksha</h3>
             <p class="bio-role script-font">The Bride</p>
             <div class="bio-lineage">
-              <p class="lineage-parents">D/o Mrs. Seema &amp; Mr. Manay Gupta</p>
-              <p class="lineage-city"><i data-lucide="map-pin" class="mini-icon"></i> Firozabad, Uttar Pradesh</p>
+              <p class="lineage-parents">D/o Mrs. Seema &amp; Mr. Manoj Gupta</p>
               <p class="lineage-grandparents">Grand D/o Late Virudevi &amp; Late Ganesh Lal Gupta</p>
+              <p class="lineage-city"><i data-lucide="map-pin" class="mini-icon"></i> Firozabad, Uttar Pradesh</p>
             </div>
           </div>
 
@@ -296,7 +324,9 @@
 
         <!-- Full Illustrated Portrait Together -->
         <div class="couple-together-showcase" data-animate="fade-up">
-          <button id="view-together-portrait-btn" class="together-pill-btn" aria-label="View Illustrated Wedding Portrait" data-full="./images/harsh-diksha.jpeg" data-caption="Er. Harsh &amp; Er. Diksha — Illustrated Royal Wedding Portrait">
+          <button id="view-together-portrait-btn" class="together-pill-btn"
+            aria-label="View Illustrated Wedding Portrait" data-full="./images/harsh-diksha.jpeg"
+            data-caption="Er. Harsh &amp; Er. Diksha — Illustrated Royal Wedding Portrait">
             <i data-lucide="sparkles" class="btn-sparkle-icon"></i>
             <span>View Harsh &amp; Diksha Illustrated Wedding Portrait</span>
             <i data-lucide="eye" class="btn-icon"></i>
@@ -311,40 +341,78 @@
     <!-- ─────────────────────────────────────────── -->
     <section id="events" class="section events-section">
       <div class="section-inner">
-        <p class="section-pre-title script-font" data-animate="fade-up">The Royal Riwaaz</p>
-        <h2 class="section-title" data-animate="fade-up">Celebration Events</h2>
+        <!-- <p class="section-pre-title script-font" data-animate="fade-up">The Royal Riwaaz</p> -->
+        <h2 class="section-title" data-animate="fade-up">Auspicious Events</h2>
 
         <div class="events-interactive-list">
 
           <!-- ═══════════════════════════════════════ -->
-          <!-- EVENT 1: HALDI & MEHENDI                -->
+          <!-- EVENT 1: HALDI & MEHENDI (GRAND CARNIVAL) -->
           <!-- ═══════════════════════════════════════ -->
           <div class="event-showcase-card event-theme--haldi" data-animate="fade-up">
-            <div class="event-card-media" data-full="./images/haldi-ceremony.jpg" data-caption="Rangilo Jashn — Haldi &amp; Mehendi Ceremony at Siddhesh Resort">
-              <img src="./images/haldi-ceremony.jpg" alt="Rangilo Jashn - Haldi &amp; Mehendi" class="event-card-img" />
+            <div class="event-card-media" data-full="./images/haldi-carnival.jpg"
+              data-caption="The Grand Carnival — Haldi &amp; Mehendi Ceremony at Siddhesh Resort">
+              <img src="./images/haldi-carnival.jpg" alt="Grand Wedding Carnival - Haldi &amp; Mehendi"
+                class="event-card-img" />
               <div class="event-card-media-overlay">
-                <span class="event-media-pill">Haldi &amp; Mehendi</span>
+                <span class="event-media-pill">Haldi &amp; Mehendi Carnival</span>
                 <i data-lucide="zoom-in" class="event-zoom-icon"></i>
               </div>
             </div>
 
             <div class="event-card-body">
               <div class="event-title-badge">
-                <span class="event-theme-icon">🌼</span>
-                <span class="event-fest-title script-font">Rangilo Jashn</span>
+                <span class="event-theme-icon">🎪</span>
+                <span class="event-fest-title script-font">The Grand Carnival</span>
               </div>
-              <h3 class="event-main-name">Haldi &amp; Mehendi</h3>
-              
+              <h3 class="event-main-name">Haldi &amp; Mehendi Carnival</h3>
+
               <div class="event-key-details">
-                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November 2026</strong></div>
-                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>11:00 AM onwards</strong></div>
-                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh Resort</strong></div>
-                <div class="detail-item dress-item"><i data-lucide="palette" class="detail-icon"></i> Dress Code: <strong>Pastel Shades, Ethnic Elegance</strong></div>
+                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November
+                    2026</strong></div>
+                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>11:00 AM
+                    onwards</strong></div>
+                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh
+                    Resort</strong></div>
+                <div class="detail-item dress-item"><i data-lucide="palette" class="detail-icon"></i> Dress Code:
+                  <strong>Colorful Festive Chic &amp; Bohemian Pastels</strong>
+                </div>
               </div>
 
-              <p class="event-narrative">
-                A joyous flower shower and turmeric blessings filled with laughter and traditional mehendi art.
-              </p>
+              <!-- Grand Carnival Highlights in Points -->
+              <div class="event-carnival-highlights">
+                <!-- <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">🎪</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Grand Wedding Carnival:</strong> An open-air carnival fiesta filled with vibrant marigold canopies, colorful umbrellas, bohemian cabanas, and lively music.
+                  </div>
+                </div>
+                <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">🎯</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Carnival Game Stalls:</strong> Ring Toss, Balloon Dart Shooting, Giant Wooden Jenga, and engaging interactive challenges with fun prizes for all guests!
+                  </div>
+                </div>
+                <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">🪔</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Artisanal Bangle &amp; Henna Bazaar:</strong> Live traditional glass bangle makers crafting custom bangles on the spot, alongside master henna artists.
+                  </div>
+                </div>
+                <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">🍧</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Street Food &amp; Refreshment Carts:</strong> Sizzling Delhi chaat counters, kulhad chai, colorful shaved ice golas, and exotic fresh fruit coolers.
+                  </div>
+                </div> -->
+                <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">🌼</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Phoolon Ki Holi &amp; Turmeric Rites:</strong> Sacred haldi blessings celebrated with a
+                    joyful flower shower of yellow roses and marigold petals amidst dhol beats.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -352,7 +420,8 @@
           <!-- EVENT 2: LAGUN                          -->
           <!-- ═══════════════════════════════════════ -->
           <div class="event-showcase-card event-theme--lagun" data-animate="fade-up">
-            <div class="event-card-media" data-full="./images/lagun-ceremony.jpg" data-caption="Lagun Ceremony — Traditional Auspicious Rituals at Siddhesh Resort">
+            <div class="event-card-media" data-full="./images/lagun-ceremony.jpg"
+              data-caption="Lagun Ceremony — Traditional Auspicious Rituals at Siddhesh Resort">
               <img src="./images/lagun-ceremony.jpg" alt="Lagun Ceremony - Kalash &amp; Diya" class="event-card-img" />
               <div class="event-card-media-overlay">
                 <span class="event-media-pill">Lagun Ceremony</span>
@@ -368,14 +437,18 @@
               <h3 class="event-main-name">Lagun</h3>
 
               <div class="event-key-details">
-                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November 2026</strong></div>
-                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>5:00 PM onwards</strong></div>
-                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh Resort</strong></div>
-                <div class="detail-item dress-item"><i data-lucide="sparkles" class="detail-icon"></i> Theme: <strong>Cream + Gold + Red</strong></div>
+                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November
+                    2026</strong></div>
+                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>5:00 PM
+                    onwards</strong></div>
+                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh
+                    Resort</strong></div>
+                <!-- <div class="detail-item dress-item"><i data-lucide="sparkles" class="detail-icon"></i> Theme: <strong>Cream + Gold + Red</strong></div> -->
               </div>
 
               <p class="event-narrative">
-                Traditional kalash, glowing diya, sacred puja thali, and fragrant flowers welcoming the auspicious wedding ties.
+                Traditional kalash, glowing diya, sacred puja thali, and fragrant flowers welcoming the auspicious
+                wedding ties.
               </p>
             </div>
           </div>
@@ -384,8 +457,9 @@
           <!-- EVENT 3: SANGEET                        -->
           <!-- ═══════════════════════════════════════ -->
           <div class="event-showcase-card event-theme--sangeet" data-animate="fade-up">
-            <div class="event-card-media" data-full="./images/gallery-4.png" data-caption="Sitaron Ni Shaam — Sangeet Night with Dance &amp; Sparklers at Siddhesh Resort">
-              <img src="./images/gallery-4.png" alt="Sangeet Night - Sitaron Ni Shaam" class="event-card-img" />
+            <div class="event-card-media" data-full="./images/sangeet-night.jpg"
+              data-caption="Sitaron Ni Shaam — Sangeet Night at Siddhesh Resort">
+              <img src="./images/sangeet-night.jpg" alt="Sangeet Night - Sitaron Ni Shaam" class="event-card-img" />
               <div class="event-card-media-overlay">
                 <span class="event-media-pill">Sangeet Night</span>
                 <i data-lucide="zoom-in" class="event-zoom-icon"></i>
@@ -400,15 +474,27 @@
               <h3 class="event-main-name">Sangeet</h3>
 
               <div class="event-key-details">
-                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November 2026</strong></div>
-                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>7:00 PM onwards</strong></div>
-                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh Resort</strong></div>
-                <div class="detail-item dress-item"><i data-lucide="palette" class="detail-icon"></i> Dress Code: <strong>Black, White &amp; Silver</strong></div>
+                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Monday, 23 November
+                    2026</strong></div>
+                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>7:00 PM
+                    onwards</strong></div>
+                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh
+                    Resort</strong></div>
+                <div class="detail-item dress-item"><i data-lucide="palette" class="detail-icon"></i> Dress Code:
+                  <strong>Western Black-Tie &amp; Cocktail Glamour</strong>
+                </div>
               </div>
 
-              <p class="event-narrative">
-                A starry musical extravaganza with fairy lights, high-energy dance performances, and celebration.
-              </p>
+              <!-- Grand Western Sangeet Highlights in Points -->
+              <div class="event-sangeet-highlights">
+                <div class="carnival-highlight-item">
+                  <span class="carnival-bullet-icon">💃</span>
+                  <div class="carnival-bullet-text">
+                    <strong>Electrifying Dance Floor &amp; Sparklers:</strong> High-octane family performances,
+                    foot-tapping DJ beats, and a dazzling display of cold-pyro sparkler fountains lighting up the night!
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -416,7 +502,8 @@
           <!-- EVENT 4: WEDDING DAY                    -->
           <!-- ═══════════════════════════════════════ -->
           <div class="event-showcase-card event-theme--wedding-day" data-animate="fade-up">
-            <div class="event-card-media" data-full="./images/gallery-3.png" data-caption="The Royal Wedding &amp; 7 Sacred Steps (Pheras) at Siddhesh Resort">
+            <div class="event-card-media" data-full="./images/gallery-3.png"
+              data-caption="The Royal Wedding &amp; 7 Sacred Steps (Pheras) at Siddhesh Resort">
               <img src="./images/gallery-3.png" alt="Wedding Ceremony - 7 Sacred Steps" class="event-card-img" />
               <div class="event-card-media-overlay">
                 <span class="event-media-pill">Wedding Day</span>
@@ -432,18 +519,21 @@
               <h3 class="event-main-name">Wedding Day</h3>
 
               <div class="event-key-details">
-                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Tuesday, 24 November 2026</strong></div>
-                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh Resort</strong></div>
+                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Tuesday, 24 November
+                    2026</strong></div>
+                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Siddhesh
+                    Resort</strong></div>
               </div>
 
               <!-- Sequential Sacred Rituals of the Wedding Day -->
               <div class="wedding-moments-timeline">
-                
+
                 <div class="moment-row">
                   <span class="moment-time">11:00 AM</span>
                   <div class="moment-info">
                     <h4 class="moment-name">"The Royal Riwaaz" (Baraat)</h4>
-                    <p class="moment-desc">Groom's royal arrival with dhol, dancing family, flowers, and grand celebration.</p>
+                    <p class="moment-desc">Groom's royal arrival with dhol, dancing family, flowers, and grand
+                      celebration.</p>
                   </div>
                 </div>
 
@@ -459,17 +549,18 @@
                   <span class="moment-time">Evening</span>
                   <div class="moment-info">
                     <h4 class="moment-name">Varmala &amp; Victory Moment</h4>
-                    <p class="moment-desc">Sacred exchange of garlands under a flower shower, followed by joined hands celebrating victory!</p>
+                    <p class="moment-desc">Sacred exchange of garlands under a flower shower, followed by joined hands
+                      celebrating victory!</p>
                   </div>
                 </div>
 
-                <div class="moment-row">
+                <!-- <div class="moment-row">
                   <span class="moment-time">7:00 PM</span>
                   <div class="moment-info">
                     <h4 class="moment-name">Wedding Mandap</h4>
                     <p class="moment-desc">Magnificent royal mandap ceremony as the couple begins their eternal union.</p>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="moment-row">
                   <span class="moment-time">7:00 PM onwards</span>
@@ -483,7 +574,8 @@
                   <span class="moment-time">3:00 AM</span>
                   <div class="moment-info">
                     <h4 class="moment-name">7 Sacred Steps (The Sacred Pheras)</h4>
-                    <p class="moment-desc">Walking around the holy Agni with Vedic chanting, sealing eternal vows of love and loyalty.</p>
+                    <p class="moment-desc">Walking around the holy Agni with Vedic chanting, sealing eternal vows of
+                      love and loyalty.</p>
                   </div>
                 </div>
 
@@ -495,7 +587,8 @@
           <!-- EVENT 5: BRIDE WELCOME (Griha Pravesh)  -->
           <!-- ═══════════════════════════════════════ -->
           <div class="event-showcase-card event-theme--welcome" data-animate="fade-up">
-            <div class="event-card-media" data-full="./images/bride-welcome.jpg" data-caption="Bride Welcome (Griha Pravesh) — Aarti Thali &amp; Family Welcome at Residence">
+            <div class="event-card-media" data-full="./images/bride-welcome.jpg"
+              data-caption="Bride Welcome (Griha Pravesh) — Aarti Thali &amp; Family Welcome at Residence">
               <img src="./images/bride-welcome.jpg" alt="Bride Welcome - Griha Pravesh" class="event-card-img" />
               <div class="event-card-media-overlay">
                 <span class="event-media-pill">Griha Pravesh</span>
@@ -511,14 +604,18 @@
               <h3 class="event-main-name">Bride Welcome</h3>
 
               <div class="event-key-details">
-                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Wednesday, 25 November 2026</strong></div>
-                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>Morning Hours</strong></div>
-                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Residence</strong></div>
-                <div class="detail-item dress-item"><i data-lucide="sparkles" class="detail-icon"></i> Theme: <strong>Peach + Pink + Gold + Cream</strong></div>
+                <div class="detail-item"><i data-lucide="calendar" class="detail-icon"></i> <strong>Wednesday, 25
+                    November 2026</strong></div>
+                <div class="detail-item"><i data-lucide="clock" class="detail-icon"></i> <strong>Morning Hours</strong>
+                </div>
+                <div class="detail-item"><i data-lucide="map-pin" class="detail-icon"></i> <strong>At Residence</strong>
+                </div>
+                <!-- <div class="detail-item dress-item"><i data-lucide="sparkles" class="detail-icon"></i> Theme: <strong>Peach + Pink + Gold + Cream</strong></div> -->
               </div>
 
               <p class="event-narrative">
-                Welcoming Er. Diksha into her new home with auspicious aarti thali, glowing diyas, flower petals on the threshold, and loving family blessings.
+                Welcoming Er. Diksha into her new home with auspicious aarti thali, glowing diyas, flower petals on the
+                threshold, and loving family blessings.
               </p>
             </div>
           </div>
@@ -536,7 +633,8 @@
         <h2 class="section-title" data-animate="fade-up">The Royal Venue</h2>
 
         <div class="venue-card-showcase" data-animate="scale-in">
-          <div class="venue-media" data-full="./images/gallery-2.png" data-caption="Siddhesh Resort — Royal Mandap &amp; Wedding Destination">
+          <div class="venue-media" data-full="./images/gallery-2.png"
+            data-caption="Siddhesh Resort — Royal Mandap &amp; Wedding Destination">
             <img src="./images/gallery-2.png" alt="Siddhesh Resort - Royal Mandap" class="venue-img" />
             <div class="venue-media-tag">Royal Destination</div>
           </div>
@@ -573,7 +671,7 @@
         </div>
 
         <h2 class="final-names" data-animate="fade-up">HARSH <span class="final-heart">♥</span> DIKSHA</h2>
-        
+
         <p class="final-quote" data-animate="fade-up">
           "TWO HEARTS. ONE BEAUTIFUL JOURNEY. A LIFETIME TOGETHER."
         </p>
@@ -622,4 +720,5 @@
   <!-- Entry Point JS -->
   <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>

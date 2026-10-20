@@ -11,6 +11,9 @@ import { playTempleBellSound, playSparkleChime } from './sounds.js';
 import { initScratchCard } from './scratch.js';
 import { initPetalShower } from './petals.js';
 
+// Reveal body now that Vite CSS modules above have been injected into the DOM
+document.body.classList.add('styles-loaded');
+
 // Prevent browser automatic scroll restoration on reload
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -73,6 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   };
 
+  // Prime info card initially hidden until gates open and courtyard is beheld
+  const heroInner = document.querySelector('.hero-inner');
+  if (heroInner) {
+    gsap.set(heroInner, { opacity: 0, y: 40, scale: 0.96 });
+  }
+
   // ═══════════════════════════════════════════════════
   // ROYAL GATES OPENING CINEMATIC SEQUENCE
   // ═══════════════════════════════════════════════════
@@ -84,18 +93,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 1. Play authentic resonant temple bell and sparkle chime
       playTempleBellSound(0.9);
-      setTimeout(() => playTempleBellSound(1.2), 600);
+      setTimeout(() => playTempleBellSound(1.2), 700);
       playSparkleChime();
 
       // 2. Start background shehnai music synchronously in user click
       playAudioSafely();
 
-      // 3. Trigger initial celebratory flower petal flurry
+      // 3. Trigger celebratory flower petal flurry
       if (window.triggerPetalShower) {
-        window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.4, 40);
+        window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.4, 45);
       }
 
-      // 4. Animate Gates 3D Swing Open over 3 seconds
+      // 4. Animate Gates 3D Swing Open with majestic pacing (4.8 seconds)
       const tl = gsap.timeline({
         onComplete: () => {
           royalGatesScreen.remove();
@@ -103,8 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
           mainContent.setAttribute('aria-hidden', 'false');
           window.scrollTo(0, 0);
 
-          // Initialize all page interactions
-          initScrollAnimations();
+          // Initialize background systems and interactions
           initCountdown();
           initParticles();
           initGallery();
@@ -114,54 +122,90 @@ document.addEventListener('DOMContentLoaded', () => {
           if (window.lucide && typeof window.lucide.createIcons === 'function') {
             window.lucide.createIcons();
           }
+
+          // Show ONLY the breathtaking royal courtyard background for 1.8 seconds,
+          // then smoothly float the royal invitation card into view!
+          setTimeout(() => {
+            if (heroInner) {
+              gsap.to(heroInner, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.4,
+                ease: 'power3.out',
+                onComplete: () => {
+                  // Mark all hero-inner animated children as done BEFORE
+                  // initScrollAnimations, so they are NOT re-triggered by ScrollTrigger.
+                  // This prevents the double-popup where the card flickers in again.
+                  heroInner.querySelectorAll('[data-animate]').forEach(el => {
+                    el.setAttribute('data-animate-done', 'true');
+                    // Ensure they are fully visible (reset any gsap from states)
+                    gsap.set(el, { opacity: 1, x: 0, y: 0, scale: 1 });
+                  });
+
+                  initScrollAnimations();
+                  if (window.triggerPetalShower) {
+                    window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.35, 30);
+                  }
+                }
+              });
+            } else {
+              initScrollAnimations();
+            }
+          }, 1800);
         }
       });
 
-      // Fade out overlay proclamation card immediately so doors parting is unobstructed
+      // Fade out overlay proclamation card immediately so gates parting is unobstructed
       const overlayContent = royalGatesScreen.querySelector('.lovable-gates-overlay-content, .royal-gates-overlay-content');
       if (overlayContent) {
         tl.to(overlayContent, {
           opacity: 0,
           scale: 0.95,
-          duration: 0.6,
+          duration: 0.8,
           ease: 'power2.in'
         }, 0);
       }
 
-      // Part the full-screen gates majestically
+      // Majestic slow 3D parting of the full-screen royal gates (4.8s)
       if (gateLeft) {
         tl.to(gateLeft, {
-          rotateY: -115,
-          duration: 3.2,
-          ease: 'power3.inOut'
-        }, 0);
+          rotateY: -120,
+          duration: 4.8,
+          ease: 'power2.inOut'
+        }, 0.2);
       }
 
       if (gateRight) {
         tl.to(gateRight, {
-          rotateY: 115,
-          duration: 3.2,
-          ease: 'power3.inOut'
-        }, 0);
-      }
-
-      // Radiant inner golden light explosion
-      if (radiance) {
-        tl.to(radiance, {
-          opacity: 1,
-          scale: 1.8,
-          duration: 2.8,
-          ease: 'power2.out'
+          rotateY: 120,
+          duration: 4.8,
+          ease: 'power2.inOut'
         }, 0.2);
       }
 
-      // Camera flies forward into the palace courtyard
+      // Radiant inner golden light burst
+      if (radiance) {
+        tl.to(radiance, {
+          opacity: 0.75,
+          scale: 1.6,
+          duration: 2.4,
+          ease: 'power2.out'
+        }, 0.4);
+        tl.to(radiance, {
+          opacity: 0,
+          duration: 1.8,
+          ease: 'power2.in'
+        }, 2.6);
+      }
+
+      // Gates screen dissolves gently into the main courtyard view
       tl.to(royalGatesScreen, {
-        scale: 1.25,
+        scale: 1.15,
         opacity: 0,
-        duration: 1.5,
+        duration: 1.3,
         ease: 'power2.inOut'
-      }, 2.2);
+      }, 4.2);
     });
   }
 
@@ -232,6 +276,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (viewTogetherBtn) {
     viewTogetherBtn.addEventListener('click', () => {
       openLightboxAtIndex(0);
+    });
+  }
+
+  // Floating Directions button audio feedback
+  const directionsBtn = document.getElementById('directions-toggle');
+  if (directionsBtn) {
+    directionsBtn.addEventListener('click', () => {
+      playSparkleChime();
     });
   }
 });

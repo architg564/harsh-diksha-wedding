@@ -20,6 +20,7 @@ export function initScrollAnimations() {
 
   const fadeUpElements = document.querySelectorAll('[data-animate="fade-up"]');
   fadeUpElements.forEach(el => {
+    if (el.getAttribute('data-animate-done') === 'true') return;
     gsap.from(el, {
       y: 60, opacity: 0, duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
@@ -28,6 +29,7 @@ export function initScrollAnimations() {
 
   const fadeRightElements = document.querySelectorAll('[data-animate="fade-right"]');
   fadeRightElements.forEach(el => {
+    if (el.getAttribute('data-animate-done') === 'true') return;
     gsap.from(el, {
       x: -80, opacity: 0, duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
@@ -36,6 +38,7 @@ export function initScrollAnimations() {
 
   const fadeLeftElements = document.querySelectorAll('[data-animate="fade-left"]');
   fadeLeftElements.forEach(el => {
+    if (el.getAttribute('data-animate-done') === 'true') return;
     gsap.from(el, {
       x: 80, opacity: 0, duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
@@ -44,6 +47,7 @@ export function initScrollAnimations() {
 
   const scaleInElements = document.querySelectorAll('[data-animate="scale-in"]');
   scaleInElements.forEach(el => {
+    if (el.getAttribute('data-animate-done') === 'true') return;
     gsap.from(el, {
       scale: 0, opacity: 0, duration: 1, ease: 'back.out(1.7)',
       scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' }
