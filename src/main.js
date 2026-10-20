@@ -107,22 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // 4. Animate Gates 3D Swing Open with majestic pacing (4.8 seconds)
       const tl = gsap.timeline({
         onComplete: () => {
-          royalGatesScreen.remove();
-          document.body.classList.remove('splash-active');
-          mainContent.setAttribute('aria-hidden', 'false');
-          window.scrollTo(0, 0);
-
-          // Initialize background systems and interactions
-          initCountdown();
-          initParticles();
-          initGallery();
-          initScratchCard();
-          initPetalShower();
-
-          if (window.lucide && typeof window.lucide.createIcons === 'function') {
-            window.lucide.createIcons();
-          }
-
           // Show ONLY the breathtaking royal courtyard background for 1.8 seconds,
           // then smoothly float the royal invitation card into view!
           setTimeout(() => {
@@ -199,12 +183,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2.6);
       }
 
-      // Gates screen dissolves gently into the main courtyard view
+      // At 3.8s: reveal mainContent BEHIND the gate screen so the hero courtyard
+      // is already visible when the gate screen dissolves — no black flash.
+      tl.call(() => {
+        document.body.classList.remove('splash-active');
+        mainContent.setAttribute('aria-hidden', 'false');
+        window.scrollTo(0, 0);
+
+        // Initialize background systems while dissolve plays
+        initCountdown();
+        initParticles();
+        initGallery();
+        initScratchCard();
+        initPetalShower();
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      }, null, 3.8);
+
+      // Gates screen dissolves gently into the main courtyard view (seamless overlap)
       tl.to(royalGatesScreen, {
         scale: 1.15,
         opacity: 0,
         duration: 1.3,
-        ease: 'power2.inOut'
+        ease: 'power2.inOut',
+        onComplete: () => {
+          // Fully remove after dissolve is complete
+          royalGatesScreen.remove();
+        }
       }, 4.2);
     });
   }
