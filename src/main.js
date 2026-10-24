@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
               initScrollAnimations();
             }
-          }, 1800);
+          }, 80);
         }
       });
 
@@ -251,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Pulse animation
-      gsap.fromTo(secretHeartBtn, 
-        { scale: 1 }, 
+      gsap.fromTo(secretHeartBtn,
+        { scale: 1 },
         { scale: 1.5, duration: 0.3, yoyo: true, repeat: 3, ease: 'back.out(2)' }
       );
     });
