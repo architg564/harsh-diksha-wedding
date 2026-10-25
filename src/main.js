@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const hangingBell = document.getElementById('hanging-temple-bell');
   const secretHeartBtn = document.getElementById('secret-heart-btn');
   const viewTogetherBtn = document.getElementById('view-together-portrait-btn');
+  const royalScrollIndicator = document.getElementById('royal-scroll-indicator');
+  const heroScrollCue = document.getElementById('hero-scroll-cue');
 
   // Pause audio when tab is hidden, resume when visible
   document.addEventListener('visibilitychange', () => {
@@ -83,138 +85,158 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ═══════════════════════════════════════════════════
+  // ═══════════════════════════════════════════════════
   // ROYAL GATES OPENING CINEMATIC SEQUENCE
   // ═══════════════════════════════════════════════════
   let gatesOpened = false;
-  if (openGatesBtn && royalGatesScreen && mainContent) {
-    openGatesBtn.addEventListener('click', () => {
-      if (gatesOpened) return;
-      gatesOpened = true;
 
-      // 1. Play authentic resonant temple bell and sparkle chime
-      playTempleBellSound(0.9);
-      setTimeout(() => playTempleBellSound(1.2), 700);
-      playSparkleChime();
+  const triggerGateOpening = () => {
+    if (gatesOpened) return;
+    gatesOpened = true;
 
-      // 2. Start background shehnai music synchronously in user click
-      playAudioSafely();
+    // 1. Play authentic resonant temple bell and sparkle chime
+    playTempleBellSound(0.9);
+    setTimeout(() => playTempleBellSound(1.2), 700);
+    playSparkleChime();
 
-      // 3. Trigger celebratory flower petal flurry
-      if (window.triggerPetalShower) {
-        window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.4, 45);
-      }
+    // 2. Start background shehnai music synchronously in user click
+    playAudioSafely();
 
-      // 4. Animate Gates 3D Swing Open with majestic pacing (4.8 seconds)
-      const tl = gsap.timeline({
-        onComplete: () => {
-          // Show ONLY the breathtaking royal courtyard background for 1.8 seconds,
-          // then smoothly float the royal invitation card into view!
-          setTimeout(() => {
-            if (heroInner) {
-              gsap.to(heroInner, {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 1.4,
-                ease: 'power3.out',
-                onComplete: () => {
-                  // Mark all hero-inner animated children as done BEFORE
-                  // initScrollAnimations, so they are NOT re-triggered by ScrollTrigger.
-                  // This prevents the double-popup where the card flickers in again.
-                  heroInner.querySelectorAll('[data-animate]').forEach(el => {
-                    el.setAttribute('data-animate-done', 'true');
-                    // Ensure they are fully visible (reset any gsap from states)
-                    gsap.set(el, { opacity: 1, x: 0, y: 0, scale: 1 });
-                  });
+    // 3. Trigger celebratory flower petal flurry
+    if (window.triggerPetalShower) {
+      window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.4, 45);
+    }
 
-                  initScrollAnimations();
-                  if (window.triggerPetalShower) {
-                    window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.35, 30);
-                  }
+    // 4. Animate Gates 3D Swing Open with majestic pacing (4.8 seconds)
+    const tl = gsap.timeline({
+      onComplete: () => {
+        // Show ONLY the breathtaking royal courtyard background for 1.8 seconds,
+        // then smoothly float the royal invitation card into view!
+        setTimeout(() => {
+          if (heroInner) {
+            gsap.to(heroInner, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1.4,
+              ease: 'power3.out',
+              onComplete: () => {
+                // Mark all hero-inner animated children as done BEFORE
+                // initScrollAnimations, so they are NOT re-triggered by ScrollTrigger.
+                // This prevents the double-popup where the card flickers in again.
+                heroInner.querySelectorAll('[data-animate]').forEach(el => {
+                  el.setAttribute('data-animate-done', 'true');
+                  // Ensure they are fully visible (reset any gsap from states)
+                  gsap.set(el, { opacity: 1, x: 0, y: 0, scale: 1 });
+                });
+
+                initScrollAnimations();
+                if (window.triggerPetalShower) {
+                  window.triggerPetalShower(window.innerWidth / 2, window.innerHeight * 0.35, 30);
                 }
-              });
-            } else {
-              initScrollAnimations();
-            }
-          }, 80);
-        }
-      });
+              }
+            });
 
-      // Fade out overlay proclamation card immediately so gates parting is unobstructed
-      const overlayContent = royalGatesScreen.querySelector('.lovable-gates-overlay-content, .royal-gates-overlay-content');
-      if (overlayContent) {
-        tl.to(overlayContent, {
-          opacity: 0,
-          scale: 0.95,
-          duration: 0.8,
-          ease: 'power2.in'
-        }, 0);
+            // Reveal scroll indicator gracefully alongside the hero card arrival
+            setTimeout(() => {
+              showRoyalScrollIndicator();
+            }, 600);
+          } else {
+            initScrollAnimations();
+            showRoyalScrollIndicator();
+          }
+        }, 80);
       }
-
-      // Majestic slow 3D parting of the full-screen royal gates (4.8s)
-      if (gateLeft) {
-        tl.to(gateLeft, {
-          rotateY: -120,
-          duration: 4.8,
-          ease: 'power2.inOut'
-        }, 0.2);
-      }
-
-      if (gateRight) {
-        tl.to(gateRight, {
-          rotateY: 120,
-          duration: 4.8,
-          ease: 'power2.inOut'
-        }, 0.2);
-      }
-
-      // Radiant inner golden light burst
-      if (radiance) {
-        tl.to(radiance, {
-          opacity: 0.75,
-          scale: 1.6,
-          duration: 2.4,
-          ease: 'power2.out'
-        }, 0.4);
-        tl.to(radiance, {
-          opacity: 0,
-          duration: 1.8,
-          ease: 'power2.in'
-        }, 2.6);
-      }
-
-      // At 3.8s: reveal mainContent BEHIND the gate screen so the hero courtyard
-      // is already visible when the gate screen dissolves — no black flash.
-      tl.call(() => {
-        document.body.classList.remove('splash-active');
-        mainContent.setAttribute('aria-hidden', 'false');
-        window.scrollTo(0, 0);
-
-        // Initialize background systems while dissolve plays
-        initCountdown();
-        initParticles();
-        initGallery();
-        initScratchCard();
-        initPetalShower();
-
-        if (window.lucide && typeof window.lucide.createIcons === 'function') {
-          window.lucide.createIcons();
-        }
-      }, null, 3.8);
-
-      // Gates screen dissolves gently into the main courtyard view (seamless overlap)
-      tl.to(royalGatesScreen, {
-        scale: 1.15,
-        opacity: 0,
-        duration: 1.3,
-        ease: 'power2.inOut',
-        onComplete: () => {
-          // Fully remove after dissolve is complete
-          royalGatesScreen.remove();
-        }
-      }, 4.2);
     });
+
+    // Fade out overlay proclamation card immediately so gates parting is unobstructed
+    const overlayContent = royalGatesScreen.querySelector('.lovable-gates-overlay-content, .royal-gates-overlay-content');
+    if (overlayContent) {
+      tl.to(overlayContent, {
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.8,
+        ease: 'power2.in'
+      }, 0);
+    }
+
+    // Majestic slow 3D parting of the full-screen royal gates (4.8s)
+    if (gateLeft) {
+      tl.to(gateLeft, {
+        rotateY: -120,
+        duration: 4.8,
+        ease: 'power2.inOut'
+      }, 0.2);
+    }
+
+    if (gateRight) {
+      tl.to(gateRight, {
+        rotateY: 120,
+        duration: 4.8,
+        ease: 'power2.inOut'
+      }, 0.2);
+    }
+
+    // Radiant inner golden light burst
+    if (radiance) {
+      tl.to(radiance, {
+        opacity: 0.75,
+        scale: 1.6,
+        duration: 2.4,
+        ease: 'power2.out'
+      }, 0.4);
+      tl.to(radiance, {
+        opacity: 0,
+        duration: 1.8,
+        ease: 'power2.in'
+      }, 2.6);
+    }
+
+    // At 3.8s: reveal mainContent BEHIND the gate screen so the hero courtyard
+    // is already visible when the gate screen dissolves — no black flash.
+    tl.call(() => {
+      document.body.classList.remove('splash-active');
+      mainContent.setAttribute('aria-hidden', 'false');
+      window.scrollTo(0, 0);
+
+      // Initialize background systems while dissolve plays
+      initCountdown();
+      initParticles();
+      initGallery();
+      initScratchCard();
+      initPetalShower();
+
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }, null, 3.8);
+
+    // Gates screen dissolves gently into the main courtyard view (seamless overlap)
+    tl.to(royalGatesScreen, {
+      scale: 1.15,
+      opacity: 0,
+      duration: 1.3,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        // Fully remove after dissolve is complete
+        royalGatesScreen.remove();
+      }
+    }, 4.2);
+  };
+
+  if (openGatesBtn && royalGatesScreen && mainContent) {
+    openGatesBtn.addEventListener('click', triggerGateOpening);
+    openGatesBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      triggerGateOpening();
+    }, { passive: false });
+
+    // Auto-open if query param ?open=true or hash #open is present (great for testing & direct preview)
+    if (window.location.hash === '#open' || new URLSearchParams(window.location.search).get('open') === 'true') {
+      setTimeout(triggerGateOpening, 150);
+    }
   }
+
 
   // ═══════════════════════════════════════════════════
   // INTERACTIVE HANGING TEMPLE BELL
@@ -293,4 +315,93 @@ document.addEventListener('DOMContentLoaded', () => {
       playSparkleChime();
     });
   }
+
+  // ═══════════════════════════════════════════════════
+  // ROYAL SCROLL SYSTEM: PROGRESS, IN-SECTION & HERO PROMPT
+  // ═══════════════════════════════════════════════════
+  const progressFill = document.getElementById('royal-progress-fill');
+
+  // 1. Update Royal Journey Progress Bar (Top of Screen)
+  const updateProgressBar = () => {
+    if (!progressFill) return;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollHeight > 0) {
+      const pct = Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100));
+      progressFill.style.width = `${pct}%`;
+    }
+  };
+
+
+  // 3. First Screen Floating Indicator (Appears only on Hero landing)
+  const scrollToNextCelebration = () => {
+    playSparkleChime();
+    const nextSection = document.getElementById('scratch-section') || document.querySelector('.section:nth-of-type(2)');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'smooth' });
+    }
+  };
+
+  if (royalScrollIndicator) {
+    royalScrollIndicator.addEventListener('click', scrollToNextCelebration);
+    royalScrollIndicator.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToNextCelebration();
+      }
+    });
+  }
+
+  if (heroScrollCue) {
+    heroScrollCue.addEventListener('click', scrollToNextCelebration);
+  }
+
+  // 4. Scroll Listener:
+  // - Top progress bar continuously tracks progress across the whole invitation.
+  // - Floating indicator is strictly visible on Hero to invite first scroll, and hides everywhere else.
+  const handleScrollVisibility = () => {
+    updateProgressBar();
+
+    if (!royalScrollIndicator) return;
+    const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+    if (currentScroll > 80) {
+      royalScrollIndicator.classList.add('is-scrolled-away');
+    } else if (gatesOpened) {
+      royalScrollIndicator.classList.remove('is-scrolled-away');
+      royalScrollIndicator.classList.add('is-visible');
+    }
+  };
+
+  window.addEventListener('scroll', handleScrollVisibility, { passive: true });
+
+  function showRoyalScrollIndicator() {
+    updateProgressBar();
+    if (!royalScrollIndicator) return;
+
+    royalScrollIndicator.classList.remove('is-scrolled-away');
+    royalScrollIndicator.classList.add('is-visible');
+
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+
+    // Gentle ripple attention on gate open
+    setTimeout(() => {
+      const scrollNow = window.scrollY || document.documentElement.scrollTop;
+      if (scrollNow < 50 && royalScrollIndicator.classList.contains('is-visible')) {
+        const ring = royalScrollIndicator.querySelector('.scroll-glow-ring');
+        if (ring) {
+          gsap.fromTo(ring, 
+            { scale: 1, opacity: 0.8 }, 
+            { scale: 1.35, opacity: 0, duration: 1.2, ease: 'power2.out', repeat: 2 }
+          );
+        }
+      }
+    }, 2800);
+  }
 });
+
+

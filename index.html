@@ -45,6 +45,15 @@
 <body>
 
   <!-- ═══════════════════════════════════════════════ -->
+  <!-- GLOBAL: Royal Golden Journey Progress Bar       -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <div id="royal-progress-tracker" class="royal-progress-tracker" aria-hidden="true">
+    <div id="royal-progress-fill" class="royal-progress-fill">
+      <span class="royal-progress-sparkle">🪔</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ -->
   <!-- GLOBAL: Particle Canvas (behind everything)    -->
   <!-- ═══════════════════════════════════════════════ -->
   <canvas id="bg-canvas"></canvas>
@@ -160,6 +169,29 @@
   <!-- ═══════════════════════════════════════════════ -->
   <main id="main-content" class="main-content" aria-hidden="true">
 
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- FLOATING ANIMATED ROYAL SCROLL INDICATOR        -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <div id="royal-scroll-indicator" class="royal-scroll-indicator" role="button" tabindex="0"
+      aria-label="Scroll down to explore wedding celebrations">
+      <div class="scroll-glow-ring"></div>
+      <div class="scroll-pill-inner">
+        <span class="scroll-sparkle-left">✦</span>
+        <div class="scroll-mouse-symbol" aria-hidden="true">
+          <span class="scroll-wheel-dot"></span>
+        </div>
+        <div class="scroll-prompt-col">
+          <span id="scroll-pill-title" class="scroll-pill-title">SCROLL TO EXPLORE</span>
+          <span id="scroll-pill-sub" class="scroll-pill-sub script-font">Celebrate with us</span>
+        </div>
+        <div class="scroll-chevrons-group" aria-hidden="true">
+          <i data-lucide="chevron-down" class="scroll-chevron-icon chevron--top"></i>
+          <i data-lucide="chevron-down" class="scroll-chevron-icon chevron--bot"></i>
+        </div>
+        <span class="scroll-sparkle-right">✦</span>
+      </div>
+    </div>
+
     <!-- ─────────────────────────────────────────── -->
     <!-- 2. PALACE COURTYARD → WEDDING INVITATION    -->
     <!-- ─────────────────────────────────────────── -->
@@ -240,6 +272,17 @@
           </div>
         </div>
 
+        <!-- Auspicious Celebration Scroll Prompt -->
+        <div id="hero-scroll-cue" class="hero-scroll-cue" data-animate="fade-up" role="button" tabindex="0"
+          aria-label="Scroll to explore ceremonies and celebration">
+          <span class="scroll-cue-flourish">🪔</span>
+          <span class="scroll-cue-text script-font">Scroll to witness our ceremonies &amp; celebrations</span>
+          <span class="scroll-cue-flourish">🪔</span>
+          <div class="hero-scroll-cue-arrow">
+            <i data-lucide="chevrons-down" class="cue-arrow-icon"></i>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -269,6 +312,20 @@
             <canvas id="scratch-canvas" class="scratch-canvas"></canvas>
           </div>
         </div>
+
+        <!-- Royal 3 Down Arrows Cascading Glow Indicator (Non-clickable GIF-style flow) -->
+        <div class="royal-scroll-down-flow" aria-hidden="true">
+          <svg class="flow-arrow arrow--1" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--2" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--3" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+        </div>
+
       </div>
     </section>
 
@@ -344,6 +401,19 @@
             <span>View Harsh &amp; Diksha Illustrated Wedding Portrait</span>
             <i data-lucide="eye" class="btn-icon"></i>
           </button>
+        </div>
+
+        <!-- Royal 3 Down Arrows Cascading Glow Indicator (Non-clickable GIF-style flow) -->
+        <div class="royal-scroll-down-flow" aria-hidden="true">
+          <svg class="flow-arrow arrow--1" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--2" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--3" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
         </div>
 
       </div>
@@ -634,6 +704,20 @@
           </div>
 
         </div>
+
+        <!-- Royal 3 Down Arrows Cascading Glow Indicator (Non-clickable GIF-style flow) -->
+        <div class="royal-scroll-down-flow" aria-hidden="true">
+          <svg class="flow-arrow arrow--1" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--2" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--3" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+        </div>
+
       </div>
     </section>
 
@@ -666,6 +750,20 @@
             </a>
           </div>
         </div>
+
+        <!-- Royal 3 Down Arrows Cascading Glow Indicator (Non-clickable GIF-style flow) -->
+        <div class="royal-scroll-down-flow" aria-hidden="true">
+          <svg class="flow-arrow arrow--1" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--2" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+          <svg class="flow-arrow arrow--3" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 4 12 12 20 4"></polyline>
+          </svg>
+        </div>
+
       </div>
     </section>
 

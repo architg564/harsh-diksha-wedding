@@ -377,6 +377,157 @@ p {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
+/* ════════════════════════════════════════════════════════════
+   FLOATING ANIMATED ROYAL SCROLL INDICATOR
+   ════════════════════════════════════════════════════════════ */
+.royal-scroll-indicator {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translate(-50%, 24px);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+              transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+              visibility 0.6s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.royal-scroll-indicator.is-visible:not(.is-scrolled-away) {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  animation: royal-scroll-float 2.5s ease-in-out infinite;
+}
+
+.royal-scroll-indicator.is-scrolled-away {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translate(-50%, 18px) scale(0.92) !important;
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.royal-scroll-indicator .scroll-glow-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50px;
+  background: radial-gradient(ellipse at center, rgba(212, 168, 83, 0.45) 0%, rgba(212, 168, 83, 0.1) 50%, transparent 75%);
+  animation: scroll-pulse-ring 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.royal-scroll-indicator .scroll-pill-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, rgba(26, 17, 11, 0.94) 0%, rgba(14, 9, 6, 0.98) 100%);
+  border: 1.5px solid var(--gold);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.75), 0 0 24px rgba(212, 168, 83, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.royal-scroll-indicator:hover .scroll-pill-inner {
+  transform: scale(1.05);
+  border-color: var(--gold-light);
+  background: linear-gradient(135deg, rgba(38, 25, 16, 0.98) 0%, rgba(22, 14, 9, 1) 100%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.9), 0 0 32px rgba(212, 168, 83, 0.65);
+}
+
+.royal-scroll-indicator .scroll-sparkle-left,
+.royal-scroll-indicator .scroll-sparkle-right {
+  color: var(--gold-light);
+  font-size: 0.85rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 4px rgba(212, 168, 83, 0.6));
+}
+
+.royal-scroll-indicator .scroll-mouse-symbol {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid var(--gold-light);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 6px rgba(212, 168, 83, 0.2);
+}
+
+.royal-scroll-indicator .scroll-wheel-dot {
+  width: 3.5px;
+  height: 6px;
+  background: var(--gold-light);
+  border-radius: 3px;
+  box-shadow: 0 0 6px #FFD700;
+  animation: scroll-dot-slide 1.8s ease-in-out infinite;
+}
+
+.royal-scroll-indicator .scroll-prompt-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.15;
+}
+
+.royal-scroll-indicator .scroll-pill-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.royal-scroll-indicator .scroll-pill-sub {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.15rem;
+  color: var(--cream);
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+}
+
+.royal-scroll-indicator .scroll-chevrons-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+
+.royal-scroll-indicator .scroll-chevron-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--gold-light);
+  filter: drop-shadow(0 0 4px rgba(212, 168, 83, 0.6));
+}
+
+.royal-scroll-indicator .chevron--top {
+  animation: chevron-fade-top 1.8s infinite;
+  margin-bottom: -8px;
+}
+
+.royal-scroll-indicator .chevron--bot {
+  animation: chevron-fade-bot 1.8s infinite;
+}
+
 @media (max-width: 768px) {
   .section-title {
     font-size: 2.5rem;
@@ -391,19 +542,82 @@ p {
   .music-btn {
     bottom: 16px;
     right: 16px;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
   }
   .directions-btn {
-    bottom: 74px;
+    bottom: 70px;
     right: 16px;
-    width: 48px;
-    height: 48px;
+    width: 46px;
+    height: 46px;
+  }
+  .music-btn-tooltip,
+  .directions-btn-tooltip {
+    display: none !important;
   }
   .shower-petals-btn {
     bottom: 16px;
     left: 16px;
-    padding: 8px 14px;
-    font-size: 0.85rem;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .shower-petals-btn .petal-btn-label {
+    display: none;
+  }
+  .shower-petals-btn .petal-btn-icon {
+    width: 22px;
+    height: 22px;
+  }
+  .royal-scroll-indicator {
+    bottom: 18px;
+    z-index: 9995;
+  }
+  .royal-scroll-indicator .scroll-pill-inner {
+    padding: 7px 15px;
+    gap: 9px;
+  }
+  .royal-scroll-indicator .scroll-pill-title {
+    font-size: 0.74rem;
+    letter-spacing: 1.6px;
+  }
+  .royal-scroll-indicator .scroll-pill-sub {
+    font-size: 0.98rem;
   }
 }
+
+@media (max-width: 480px) {
+  .royal-scroll-indicator {
+    bottom: 18px;
+  }
+  .royal-scroll-indicator .scroll-sparkle-left,
+  .royal-scroll-indicator .scroll-sparkle-right {
+    display: none;
+  }
+  .royal-scroll-indicator .scroll-pill-inner {
+    padding: 6px 13px;
+    gap: 7px;
+  }
+  .royal-scroll-indicator .scroll-mouse-symbol {
+    width: 15px;
+    height: 22px;
+  }
+  .royal-scroll-indicator .scroll-wheel-dot {
+    width: 3px;
+    height: 5px;
+  }
+  .royal-scroll-indicator .scroll-pill-title {
+    font-size: 0.68rem;
+    letter-spacing: 1.3px;
+  }
+  .royal-scroll-indicator .scroll-pill-sub {
+    font-size: 0.92rem;
+  }
+}
+
+
+
